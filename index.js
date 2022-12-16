@@ -161,8 +161,70 @@ function generateEng() {
         },
     ])
     .then((answers) => {
-        const engineer = new Engineer(answers.managerName, answers.managerID, answers.managerEmail, answers.managerGithub, answers.managerOffice)
+        const engineer = new Engineer(answers.engName, answers.engID, answers.engEmail, answers.engGithub)
         teamMembers.push(engineer)
+        addTeamMember()
+    })
+}
+
+function generateInt() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'Name',
+            message: `What is the intern's name?`,
+            validate: (input) => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log("Please enter the intern's name to continue!");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'ID',
+            message: `What is the intern's employee ID?`,
+            validate: (input) => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log("Please enter the intern's employee ID to continue!");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'Email',
+            message: `What is the intern's email address?`,
+            validate: (input) => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log("Please enter the intern's email address to continue!");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'Github',
+            message: `What is the intern's school?`,
+            validate: (input) => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log("Please enter the intern's school to continue!");
+                    return false;
+                }
+            }
+        },
+    ])
+    .then((answers) => {
+        const intern = new Intern(answers.intName, answers.intID, answers.intEmail, answers.intGithub)
+        teamMembers.push(intern)
         addTeamMember()
     })
 }
