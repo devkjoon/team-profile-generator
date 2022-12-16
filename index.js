@@ -1,14 +1,17 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+let teamMembers = [];
+let teamIDs = [];
+
 inquirer
     .prompt([
         {
             type: 'input',
-            name: 'manager',
-            message: `What is the team manager's name?`,
-            validate: (managerInput) => {
-                if (managerInput) {
+            name: 'managerName',
+            message: 'What is the your name?',
+            validate: (input) => {
+                if (input) {
                     return true;
                 } else { 
                     console.log("Please enter your name to continue!");
@@ -18,10 +21,10 @@ inquirer
         },
         {
             type: 'input',
-            name: 'employeeID',
+            name: 'managerID',
             message: 'What is your employee ID?',
-            validate: (idInput) => {
-                if (idInput) {
+            validate: (input) => {
+                if (input) {
                     return true;
                 } else {
                     console.log("Please enter your employee ID to continue!");
@@ -31,23 +34,23 @@ inquirer
         },
         {
             type: 'input',
-            name: 'email',
-            message: 'What is your email?',
-            validate: (emailInput) => {
-                if (emailInput) {
+            name: 'managerEmail',
+            message: 'What is your email address?',
+            validate: (input) => {
+                if (input) {
                     return true;
                 } else {
-                    console.log("Please enter your email to continue!");
+                    console.log("Please enter your email address to continue!");
                     return false;
                 }
             }
         },
         {
             type: 'input',
-            name: 'github',
+            name: 'managerGithub',
             message: 'What is your GitHub username?',
-            validate: (githubInput) => {
-                if (githubInput) {
+            validate: (input) => {
+                if (input) {
                     return true;
                 } else {
                     console.log("Please enter your GitHub username to continue!");
@@ -57,10 +60,10 @@ inquirer
         },
         {
             type: 'input',
-            name: 'office',
+            name: 'managerOffice',
             message: 'What is your office number?',
-            validate: (officeInput) => {
-                if (officeInput) {
+            validate: (input) => {
+                if (input) {
                     return true;
                 } else {
                     console.log("Please enter your office number to continue!");
@@ -69,3 +72,97 @@ inquirer
             }
         }
     ])
+    .then((answers) => {
+        const manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerGithub, answers.managerOffice)
+        teamMembers.push(manager)
+        addTeamMember()
+    })
+
+function addTeamMember() {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'member',
+            message: `Select which team member you'd like to add to your team!`,
+            choices: [
+                'Engineer',
+                'Intern',
+                'No team members to add'
+            ]
+        }
+    ])
+    .then(answers => {
+        switch(answers.type) {
+            case 'Engineer':
+                generateEng()
+                break
+            case 'Intern':
+                generateInt()
+                break
+            default:
+                makeTeam()
+        }
+    })
+}
+
+function generateEng() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'engName',
+            message: `What is the engineer's name?`,
+            validate: (input) => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log("Please enter the engineer's name to continue!");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'engID',
+            message: `What is the engineer's employee ID?`,
+            validate: (input) => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log("Please enter the engineer's employee ID to continue!");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'engEmail',
+            message: `What is the engineer's email address?`,
+            validate: (input) => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log("Please enter the engineer's email address to continue!");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'engGithub',
+            message: `What is the engineer's GitHub username?`,
+            validate: (input) => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log("Please enter the engineer's GitHub username to continue!");
+                    return false;
+                }
+            }
+        },
+    ])
+    .then((answers) => {
+        const engineer = new Engineer(answers.managerName, answers.managerID, answers.managerEmail, answers.managerGithub, answers.managerOffice)
+        teamMembers.push(engineer)
+        addTeamMember()
+    })
+}
