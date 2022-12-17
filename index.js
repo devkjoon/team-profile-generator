@@ -1,5 +1,15 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const path = require('path');
+
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+
+const DIST_DIR = path.resolve(__dirname, 'dist');
+const distPath = path.join(DIST_DIR, 'team.html');
+
+const render = require('./src/renderHTML')
 
 let teamMembers = [];
 let teamIDs = [];
@@ -47,19 +57,6 @@ inquirer
         },
         {
             type: 'input',
-            name: 'managerGithub',
-            message: 'What is your GitHub username?',
-            validate: (input) => {
-                if (input) {
-                    return true;
-                } else {
-                    console.log("Please enter your GitHub username to continue!");
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
             name: 'managerOffice',
             message: 'What is your office number?',
             validate: (input) => {
@@ -73,9 +70,10 @@ inquirer
         }
     ])
     .then((answers) => {
-        const manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerGithub, answers.managerOffice)
-        teamMembers.push(manager)
-        addTeamMember()
+        const manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerOffice);
+        teamMembers.push(manager);
+        teamIDs.push(answers.managerID);
+        addTeamMember();
     })
 
 function addTeamMember() {
@@ -92,7 +90,7 @@ function addTeamMember() {
         }
     ])
     .then(answers => {
-        switch(answers.type) {
+        switch(answers.memberType) {
             case 'Engineer':
                 generateEng()
                 break
@@ -161,9 +159,10 @@ function generateEng() {
         },
     ])
     .then((answers) => {
-        const engineer = new Engineer(answers.engName, answers.engID, answers.engEmail, answers.engGithub)
-        teamMembers.push(engineer)
-        addTeamMember()
+        const engineer = new Engineer(answers.engName, answers.engID, answers.engEmail, answers.engGithub);
+        teamMembers.push(engineer);
+        teamIDs.push(answers.engID);
+        addTeamMember();
     })
 }
 
@@ -223,8 +222,13 @@ function generateInt() {
         },
     ])
     .then((answers) => {
-        const intern = new Intern(answers.intName, answers.intID, answers.intEmail, answers.intGithub)
-        teamMembers.push(intern)
-        addTeamMember()
+        const intern = new Intern(answers.intName, answers.intID, answers.intEmail, answers.intGithub);
+        teamMembers.push(intern);
+        teamIDs.push(intID);
+        addTeamMember();
     })
+}
+
+function makeTeam() {
+    fs.writeFileSync(distPath, render(teamMembers), 'utf-8');
 }
