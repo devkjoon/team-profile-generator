@@ -50,7 +50,7 @@ To generate your own team,
 
 ## Preview
 
-https://user-images.githubusercontent.com/114375310/208500949-eee69a18-d738-4156-bbcc-b8008f87cab1.mp4
+https://user-images.githubusercontent.com/114375310/208503519-02b83325-260d-471e-b1b3-027630bcc519.mp4
 
 ## License
 
