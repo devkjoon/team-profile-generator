@@ -95,7 +95,7 @@ function startApp() {
         },
       ])
       .then((answers) => {
-        switch (answers.memberChoice) {
+        switch (answers.member) {
           case "Engineer":
             generateEng();
             break;
@@ -188,7 +188,7 @@ function startApp() {
       .prompt([
         {
           type: "input",
-          name: "Name",
+          name: "intName",
           message: `What is the intern's name?`,
           validate: (input) => {
             if (input) {
@@ -201,7 +201,7 @@ function startApp() {
         },
         {
           type: "input",
-          name: "ID",
+          name: "intID",
           message: `What is the intern's employee ID?`,
           validate: (input) => {
             if (input) {
@@ -214,7 +214,7 @@ function startApp() {
         },
         {
           type: "input",
-          name: "Email",
+          name: "intEmail",
           message: `What is the intern's email address?`,
           validate: (input) => {
             if (input) {
@@ -229,7 +229,7 @@ function startApp() {
         },
         {
           type: "input",
-          name: "Github",
+          name: "intSchool",
           message: `What is the intern's school?`,
           validate: (input) => {
             if (input) {
@@ -246,10 +246,10 @@ function startApp() {
           answers.intName,
           answers.intID,
           answers.intEmail,
-          answers.intGithub
+          answers.intSchool
         );
         teamMembers.push(intern);
-        teamIDs.push(intID);
+        teamIDs.push(answers.intID);
         addTeamMember();
       });
   }
