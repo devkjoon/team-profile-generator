@@ -14,8 +14,12 @@ This application allows users to automatically generate a README.md file with us
     
 ## Built With
 
+- HTML
+- CSS
 - JavaScript
 - Node.js
+- Jest
+- Inquirer
 
 ## Installation
     

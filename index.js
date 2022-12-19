@@ -21,7 +21,7 @@ function startApp() {
         {
           type: "input",
           name: "managerName",
-          message: "What is the your name?",
+          message: "What is the manager's name?",
           validate: (input) => {
             if (input) {
               return true;
@@ -34,7 +34,7 @@ function startApp() {
         {
           type: "input",
           name: "managerID",
-          message: "What is your employee ID?",
+          message: "What is the manager's employee ID?",
           validate: (input) => {
             if (input) {
               return true;
@@ -47,7 +47,7 @@ function startApp() {
         {
           type: "input",
           name: "managerEmail",
-          message: "What is your email address?",
+          message: "What is the manager's email address?",
           validate: (input) => {
             if (input) {
               return true;
@@ -60,7 +60,7 @@ function startApp() {
         {
           type: "input",
           name: "managerOffice",
-          message: "What is your office number?",
+          message: "What is the manager's office number?",
           validate: (input) => {
             if (input) {
               return true;
