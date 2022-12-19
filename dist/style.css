@@ -1,9 +1,14 @@
 body {
-    background-color: #bc6c25
+    background-color: #606c38
 }
 
 .heading{
     background-color: #fefae0
+}
+
+.toptext {
+    color: #283618;
+    
 }
 
 .card {
@@ -34,7 +39,7 @@ body {
     padding-bottom: 3px;
     border-radius: 5px;
     display: flex;
-    color: #fed85d;
+    color: #dda15e;
     justify-content: center;
     align-items: center
 }

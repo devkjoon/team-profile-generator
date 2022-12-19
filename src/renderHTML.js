@@ -103,13 +103,13 @@ module.exports = team => {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid heading">
         <div class="row">
             <div class="col-12 p-5 mb-3 team-heading">
-                <h1 class="text-center">My Team</h1>
+                <h1 class="text-center toptext">My Team</h1>
             </div>
         </div>
     </div>
