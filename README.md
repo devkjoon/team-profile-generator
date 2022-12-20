@@ -3,7 +3,7 @@
     
 ## Description  
 
-This application allows users to automatically generate a README.md file with user input via the Terminal. By simplifying the README creation process, users are able to focus more on their project and make the timeline. 
+This application allows users to automatically generate a Team Portfolio Page via HTML with user input via the Terminal. The terminal takes in information about employees and appends that information to the HTML.
 
 ## Table of Contents
 - [Built With](#built-with)
